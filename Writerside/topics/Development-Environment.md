@@ -30,10 +30,11 @@ This is the project configuration file. It contains the following fields:
 Look at the generated `.env` file.
 
 ```
-PATH_TO_FUNCTION_OUTPUT = "%appdata%\.minecraft\saves\<name>\datapacks\<datapack>\data"
+PATH_TO_FUNCTION_OUTPUT = "%appdata %\.minecraft\saves\<name>\datapacks\<datapack>\data"
 ```
+(mind the space between the `%appdata` and the `%`, for some reason Writerside won't compile if I don't put a space there, and escaping it doesn't work)
 
-This is the path to the folder where the compiled functions will be placed. This is the path to the `data` folder of the datapack. You need to replace `<name>` with the name of the world, and `<datapack>` with the name of the datapack. For example, if the world is named `world` and the datapack is named `my_datapack`, then the path would be `\%appdata\%\\.minecraft\saves\world\datapacks\my_datapack\data`.
+This is the path to the folder where the compiled functions will be placed. This is the path to the `data` folder of the datapack. You need to replace `<name>` with the name of the world, and `<datapack>` with the name of the datapack. For example, if the world is named `world` and the datapack is named `my_datapack`, then the path would be `\%appdata \%\.minecraft\saves\world\datapacks\my_datapack\data`.
 
 Note that this means you are responsible for creating the datapack and world, which you probably should know if you are looking at this guide.
 

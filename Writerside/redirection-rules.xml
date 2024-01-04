@@ -6,8 +6,4 @@
         <accepts>page.html</accepts>
     </rule>
     -->
-    <rule id="7955441b">
-        <description>Created after removal of "Pass by Reference" from Help Instance</description>
-        <accepts>Pass-by-Reference.html</accepts>
-    </rule>
 </rules>
