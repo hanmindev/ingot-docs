@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE instance-profile
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/product-profile.dtd">
+
+<instance-profile id="hi"
+                 name="Help Instance"
+                 start-page="Default-topic.md">
+
+    <toc-element topic="Default-topic.md">
+    </toc-element>
+    <toc-element topic="Motivation.md"/>
+    <toc-element topic="Development-Environment.md"/>
+    <toc-element topic="Common-Programming-Concepts.md">
+        <toc-element topic="Variables.md"/>
+        <toc-element topic="Functions.md"/>
+        <toc-element topic="Control-Flow.md"/>
+    </toc-element>
+    <toc-element topic="The-Memory-Model.md">
+        <toc-element topic="Minecraft-vs-Normal-Systems.md"/>
+        <toc-element topic="The-Stack.md"/>
+        <toc-element topic="The-Heap.md"/>
+        <toc-element topic="Global-Memory.md"/>
+        <toc-element topic="Entities-as-Objects.md">
+        </toc-element>
+        <toc-element topic="Pointers.md"/>
+    </toc-element>
+    <toc-element topic="Execution-Context.md"/>
+    <toc-element topic="Structs.md"/>
+    <toc-element topic="Dynamic-Access.md"/>
+    <toc-element topic="Inline-mcfunction.md"/>
+</instance-profile>
