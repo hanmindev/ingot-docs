@@ -36,7 +36,7 @@ Again, more details will be in the [Execution Context](Execution-Context.md) top
 
 ## Storing Data in Entities
 
-You may want to store data inside entities. We can do this easily using the `entity` keyword.
+You may want to store data inside entities. We can do this easily using the `entity` keyword. Unfortunately because Minecraft does not allow arbitrary data storage in entities, so only values that can be stored in a scoreboard (integers, booleans) can be stored in entities.
 
 WARNING: Similar to how declaring a global variable makes the variable accessible anywhere, using the entity keyword makes the entity variable `val` accessible anywhere. Consider adding the `static` keyword to the variable declaration to make it only accessible in the current file.
 
