@@ -72,7 +72,7 @@ fn main() {
 }
 
 impl Team {
-    fn add_points(&self, points: int) {
+    fn add_points(points: int) {
         self.points += points;
     }
 }
