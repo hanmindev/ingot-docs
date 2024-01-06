@@ -1,6 +1,6 @@
 # Why Ingot?
 
-The creation of the mcfunction language is quite... unique. What was a set of console commands for players to control their game environment quickly evolved into its own programming language, albeit with many asterisks.
+The creation of the mcfunction language is quite... unique. What was a set of console commands for players to control their game environment quickly evolved into its own programming language, albeit with many caveats.
 
 Since this was never really meant to be a proper programming language, but rather had features added to it until it became Turing complete, it is missing a lot of features common in other non-machine level languages, such as expression evaluation or proper if-else statements.
 
