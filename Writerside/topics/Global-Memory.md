@@ -1,6 +1,6 @@
 # Global Memory
 
-In addition, there is one more place where you can store memory. This is the global memory, which is a region of memory that is shared between all functions, where we can store global variables.
+There also exists global memory, which is a region of memory that is shared between all functions, where we can store global variables.
 
 Normally, using global variables is bad practice and should be avoided. However, in Minecraft, they allow us to bind the global variables to known scoreboard and storage locations, meaning that they can be accessed very quickly without needing to search for them.
 

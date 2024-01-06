@@ -25,4 +25,4 @@ This is not incredibly fast, nor is it incredibly memory efficient, but it is si
 
 I presume that the heap will not be used too much, so this should be fine.
 
-Note that while the heap is incredibly useful in normal systems, it should be seldom used in Minecraft. This is because of the poor speed of the heap implementation, and the fact that similar functionality can be achieved in other ways. Refer to [Static Memory](Global-Memory.md) and [Entities as Objects](Entities-as-Objects.md).
+Note that while the heap is incredibly useful in normal systems, it should be seldom used in Minecraft. This is because of the poor speed of the heap implementation, and the fact that similar functionality can be achieved in other ways. Refer to [Global Memory](Global-Memory.md) and [Entities as Objects](Data-in-Entities.md).

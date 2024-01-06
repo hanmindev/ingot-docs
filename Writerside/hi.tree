@@ -11,7 +11,8 @@
     <toc-element topic="Motivation.md"/>
     <toc-element topic="Development-Environment.md"/>
     <toc-element topic="Common-Programming-Concepts.md">
-        <toc-element topic="Variables.md"/>
+        <toc-element topic="Variables.md">
+        </toc-element>
         <toc-element topic="Functions.md"/>
         <toc-element topic="Control-Flow.md"/>
     </toc-element>
@@ -20,7 +21,7 @@
         <toc-element topic="The-Stack.md"/>
         <toc-element topic="The-Heap.md"/>
         <toc-element topic="Global-Memory.md"/>
-        <toc-element topic="Entities-as-Objects.md">
+        <toc-element topic="Data-in-Entities.md">
         </toc-element>
         <toc-element topic="Pointers.md"/>
     </toc-element>

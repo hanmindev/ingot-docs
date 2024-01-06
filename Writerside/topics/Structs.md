@@ -1,6 +1,6 @@
 # Structs
 
-Structs are a way to store multiple values in a single variable.
+Structs are a way to store multiple values in a single variable. It is like a compound except that it is type safe, but more restrictive.
 
 ## Declaration
 

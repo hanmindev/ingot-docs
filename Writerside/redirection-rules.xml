@@ -6,4 +6,8 @@
         <accepts>page.html</accepts>
     </rule>
     -->
+    <rule id="65d2c074">
+        <description>Created after removal of "Interfaces" from The Ingot Programming Language</description>
+        <accepts>Interfaces.html</accepts>
+    </rule>
 </rules>

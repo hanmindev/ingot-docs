@@ -1,4 +1,4 @@
-# Entities as Objects
+# Storing Data in Entities
 
 Treating entities as a way to store data through scoreboards is a very powerful concept in datapack creation.
 
@@ -34,7 +34,7 @@ fn main() {
 
 Again, more details will be in the [Execution Context](Execution-Context.md) topic, but essentially the code inside the `ctx` macro will run as if it were run by the entity `foo`.
 
-## Storing Data in Entities
+## Storing Integer Values in Entities
 
 You may want to store data inside entities. We can do this easily using the `entity` keyword. Unfortunately because Minecraft does not allow arbitrary data storage in entities, so only values that can be stored in a scoreboard (integers, booleans) can be stored in entities.
 
@@ -52,7 +52,7 @@ This will store the value 3 in the entity `foo`, which can be accessed later.
 
 In the game, a scoreboard objective with name `namespace.file_name.val` will be created.
 
-## Accessing Data in Entities
+## Accessing Integer Values in Entities
 
 We can access the data in entities using the `entity` keyword.
 
@@ -66,3 +66,5 @@ fn main() {
 ```
 
 This will print the value of the variable `val` in the entity `foo`. If there is nothing stored in the entity, it will print 0.
+
+## Storing Storage Values in Entities
