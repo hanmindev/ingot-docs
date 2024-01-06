@@ -13,7 +13,7 @@ There have been numerous other mcfunction compiler projects for various purposes
 1. They are very similar to mcfunction, but provide some additional features such as expression evaluation or if-else statements, providing a more pleasant development experience with minimal performance loss.
 2. They are very different from mcfunction, providing a higher level language which is easier to use, but runs slowly.
 
-Having complicated projects in mind which would benefit from modern programming language features, I decided to approach this problem from a different angle.
+Neither of these are ideal; the first category still makes it difficult to write complex programs, and the second category, while still producing good enough performance, is not as performant as it could be. Thus, I decided to create a language which is both easy to use and performant.
 
 A lot of inspiration regarding the [Rust programming language's](https://www.rust-lang.org/) approach to zero-cost abstractions was taken, in order to provide an easy to use yet performant language.
 
@@ -31,7 +31,7 @@ There are many differences between mcfunction and other languages. To name a few
 4. Similar to functional programming languages, loops must be written in a recursive manner. Unlike any other language, many other constructs must also be written using functions, such as if-else statements.
 5. .mcfunction has a concept of execution context which is not present in other languages but is incredibly powerful and should be leveraged as much as possible. Thus, the language should be designed to make it easy to use this feature.
    * Note: this feature is powerful not because it allows .mcfunction to have features missing in other languages; any sensible game engine should have a better way to do this. Rather, it is powerful because Minecraft gives us so little to work with.
-6. Minecraft has access to most of the Java primitives such as signed 32-bit integers, floats, doubles, strings, etc, but many of them have weird restrictions on them.
+6. Minecraft has access to most of the Java primitives such as signed 32-bit integers, floats, doubles, strings, etc., but many of them have weird restrictions on them.
    * Only integers can be stored in scoreboards, meaning that all other data types must be stored in storage which has a much slower access time.
    * Arithmetic operations can only be done on integers, and not floats or doubles. There are ways to get around this, such as casting to an integer, emulating floating point operations, etc., but they are all incredibly slow and the developer should be aware of this.
 
