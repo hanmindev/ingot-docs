@@ -24,7 +24,6 @@
         <toc-element topic="Global-Memory.md"/>
         <toc-element topic="Data-in-Entities.md">
         </toc-element>
-        <toc-element topic="Pointers.md"/>
     </toc-element>
     <toc-element topic="Execution-Context.md"/>
     <toc-element topic="Dynamic-Access.md"/>

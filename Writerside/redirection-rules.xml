@@ -10,4 +10,8 @@
         <description>Created after removal of "Interfaces" from The Ingot Programming Language</description>
         <accepts>Interfaces.html</accepts>
     </rule>
+    <rule id="65d056a6">
+        <description>Created after removal of "Pointers" from The Ingot Programming Language</description>
+        <accepts>Pointers.html</accepts>
+    </rule>
 </rules>

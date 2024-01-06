@@ -31,7 +31,7 @@ double: 64-bit floating point number
 
 string: string (note there are no characters, only strings)
 
-compound: An ordered list of attribute-value pairs. The attribute is a string, and the value can be any data type. Declare using curly braces `{}`. Example: `{ "a": 1, "b": 2.0, "c": 3.0, "d": "Hello World!" }`. If you wish to enforce type safety, look at the [Structs](Bundling-Data.md) topic. You can either use a struct instead, or use a struct as a type parameter for a compound.
+compound: An ordered list of attribute-value pairs. The attribute is a string, and the value can be any data type. Declare using curly braces `{}`. Example: `{ "a": 1, "b": 2.0, "c": 3.0, "d": "Hello World!" }`. Read more in [Bundling Data](Bundling-Data.md).
 
 list: An ordered list of values which have dynamic size. The values can be any one data type. Declare using `{}`. Example: `{ 1, 2, 3, 4, 5 }`
 

@@ -1,4 +1,4 @@
-# Storing Data in Entities
+# Storing Data in (Tile) Entities
 
 Treating entities as a way to store data through scoreboards is a very powerful concept in datapack creation.
 
@@ -67,4 +67,95 @@ fn main() {
 
 This will print the value of the variable `val` in the entity `foo`. If there is nothing stored in the entity, it will print 0.
 
+Of course, we can modify the value of the variable `val` in the entity `foo`:
+
+```C
+fn main() {
+    ctx!("as @e[name=foo]", {
+        static entity int val;
+        val += 3;
+        
+        println!(val);
+    });
+}
+```
+
+This will add 3 to the value of the variable `val` in the entity `foo`.
+
 ## Storing Storage Values in Entities
+
+Although we cannot store arbitrary data in entities, if the data is part of the entity's NBT, we can store it in the entity. We can use the `entity_nbt` macro to do this.
+
+For example, if we want to modify the entity's position, we can do so like this:
+
+```C
+fn main() {
+    list<double> pos = { 1.0, 2.0, 3.0 };
+
+    ctx!("as @e[name=foo]", {
+        entity_nbt!("Pos") = pos;
+    });
+}
+```
+
+This will set the position of the entity `foo` to be (1.0, 2.0, 3.0).
+
+## Accessing Storage Values in Entities
+
+We can access the data in entities using the `entity_nbt` macro.
+
+```C
+fn main() {
+    ctx!("as @e[name=foo]", {
+        list<double> pos = entity_nbt!("Pos");
+        println!(pos);
+    });
+}
+```
+
+This will print the position of the entity `foo`.
+
+Note: `pos` and `entity_nbt!("Pos")` point to the same thing, and thus modifying one will modify the other. To avoid this, you can use the `copy` macro:
+
+```C
+fn main() {
+    ctx!("as @e[name=foo]", {
+        list<double> pos = copy!(entity_nbt!("Pos"));
+        
+        entity_nbt!("Pos[0]") = 0.0;
+        
+        println!(pos);
+    });
+}
+```
+
+This will print the position of the entity `foo` before it was modified.
+
+## Storing Storage Values in Tile Entities
+
+Similar to how we can store data in entities, we can also store data in tile entities. We can use the `block_nbt` macro to do this.
+
+```C
+fn main() {
+    ctx!("positioned 0 0 0", {
+        block_nbt!("IsPlaying") = false;
+}
+```
+
+If there is a jukebox at position (0, 0, 0), this will set the `IsPlaying` tag to false.
+
+## Accessing Storage Values in Tile Entities
+
+We can access the data in entities using the `block_nbt` macro.
+
+```C
+fn main() {
+    ctx!("positioned 0 0 0", {
+        bool playing = block_nbt!("IsPlaying");
+        
+        println!(playing);
+    });
+}
+```
+
+If there is a jukebox at position (0, 0, 0), this will print the value of the `IsPlaying` tag.
