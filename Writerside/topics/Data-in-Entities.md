@@ -115,21 +115,14 @@ fn main() {
 
 This will print the position of the entity `foo`.
 
-Note: `pos` and `entity_nbt!("Pos")` point to the same thing, and thus modifying one will modify the other. To avoid this, you can use the `copy` macro:
+Note: `pos` and `entity_nbt!("Pos")` are not the same, but rather a deep copy of the data is made. This means that modifying `pos` will not modify the entity's position.
 
-```C
-fn main() {
-    ctx!("as @e[name=foo]", {
-        list<double> pos = copy!(entity_nbt!("Pos"));
-        
-        entity_nbt!("Pos[0]") = 0.0;
-        
-        println!(pos);
-    });
-}
-```
+You can either:
 
-This will print the position of the entity `foo` before it was modified.
+1. Modify the entity's position directly using `entity_nbt!("Pos")`
+2. Modify `pos` and then set the entity's position using `entity_nbt!("Pos") = pos`
+
+The first option is more efficient.
 
 ## Storing Storage Values in Tile Entities
 
@@ -159,3 +152,7 @@ fn main() {
 ```
 
 If there is a jukebox at position (0, 0, 0), this will print the value of the `IsPlaying` tag.
+
+## Details of how NBT access works
+
+When you use the `entity_nbt` or `block_nbt` macro to assign the value of a variable, 

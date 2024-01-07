@@ -40,13 +40,20 @@ All data types can also be put in an array. For example, `int[]` is an array of 
 _src/main.ing_
 
 ```C
+struct Example_Struct {
+    int a;
+    float b;
+    double c;
+    string d;
+} // see Bundling Data for more information on structs
+
 fn main() {
     bool a = true;
     int b = 1;
     float c = 2.0;
     double d = 3.0;
     string e = "Hello World!";
-    compound f = { "a": 1, "b": 2.0, "c": 3.0, "d": "Hello World!" };
+    compound<Example_Struct> f = { "a": 1, "b": 2.0, "c": 3.0, "d": "Hello World!" };
     int[] g = {1, 2, 3, 4, 5};
     list<int> h = { 1, 2, 3, 4, 5 };
 }
