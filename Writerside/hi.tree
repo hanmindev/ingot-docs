@@ -25,10 +25,12 @@
         <toc-element topic="Data-in-Entities.md">
         </toc-element>
     </toc-element>
-    <toc-element topic="Execution-Context.md"/>
-    <toc-element topic="Dynamic-Access.md"/>
-    <toc-element topic="Macros.md"/>
-    <toc-element topic="Inline-mcfunction.md"/>
+    <toc-element topic="Macros.md">
+        <toc-element topic="Execution-Context.md"/>
+        <toc-element topic="Dynamic-Access.md"/>
+        <toc-element topic="Inline-mcfunction.md"/>
+    </toc-element>
+    <toc-element topic="Modules.md"/>
     <toc-element topic="Compiling.md">
         <toc-element topic="File-Formats.md"/>
     </toc-element>

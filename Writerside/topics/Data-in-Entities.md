@@ -38,12 +38,10 @@ Again, more details will be in the [Execution Context](Execution-Context.md) top
 
 You may want to store data inside entities. We can do this easily using the `entity` keyword. Unfortunately because Minecraft does not allow arbitrary data storage in entities, so only values that can be stored in a scoreboard (integers, booleans) can be stored in entities.
 
-WARNING: Similar to how declaring a global variable makes the variable accessible anywhere, using the entity keyword makes the entity variable `val` accessible anywhere. Consider adding the `static` keyword to the variable declaration to make it only accessible in the current file.
-
 ```C
 fn main() {
     ctx!("as @e[name=foo]", {
-        static entity int val = 3;
+        entity int val = 3;
     });
 }
 ```
@@ -52,6 +50,18 @@ This will store the value 3 in the entity `foo`, which can be accessed later.
 
 In the game, a scoreboard objective with name `namespace.file_name.val` will be created.
 
+Note: You may want to allow other files to access the value of `val`. You can do this by exporting the value of `val`:
+
+```C
+export entity int val;
+
+fn main() {
+    ctx!("as @e[name=foo]", {
+        val = 3;
+    });
+}
+```
+
 ## Accessing Integer Values in Entities
 
 We can access the data in entities using the `entity` keyword.
@@ -59,7 +69,7 @@ We can access the data in entities using the `entity` keyword.
 ```C
 fn main() {
     ctx!("as @e[name=foo]", {
-        static entity int val;
+        entity int val;
         println!(val);
     });
 }
@@ -72,7 +82,7 @@ Of course, we can modify the value of the variable `val` in the entity `foo`:
 ```C
 fn main() {
     ctx!("as @e[name=foo]", {
-        static entity int val;
+        entity int val;
         val += 3;
         
         println!(val);
