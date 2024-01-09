@@ -6,7 +6,9 @@ In Minecraft although we can do the same thing, indexing the stack is a bit expe
 
 However, we are able to leverage an advantage that Minecraft has over normal systems: the ability to create an arbitrary number of scoreboards at compile time.
 
-If we assume that functions cannot call themselves recursively (even through other functions, i.e. if we treat all the functions as nodes, and draw an edge to other functions that the function calls, we cannot have a cycle), then we can create a fixed number of scoreboards for each function, since the amount of stack memory needed is known at compile time.
+If we assume that functions cannot call themselves recursively (even through other functions, i.e. if we treat all the functions as nodes, and draw an edge to other functions that the function calls, we cannot have a cycle), then we can create a fixed number of scoreboards for each function, since the amount of stack memory needed is known at compile time. Essentially we are moving as much of the stack memory to global memory.
+
+I'm sure this seems like an awful idea, but efficiency-wise it is best.
 
 This may seem wasteful, but it should not be too bad. There are some optimizations to reduce the number of scoreboards:
 
@@ -24,7 +26,3 @@ By using the `rec` keyword in front of a function, the programmer can tell the c
 Note that the `rec` keyword is only needed for functions that contain a cycle, and not necessarily by every function that a `rec` function calls.
 
 Then, every time a `rec` function is called, additional memory will be allocated on the stack for the function to use. Note that using macros, we can allow the function to use the stack values directly, unlike in a normal system where the function would need to copy the stack values to registers.
-
-Now, it seems like we've solved just about every stack-related problem, but there is one more problem: we can't pass pointers!
-
-We will go into how pointers will work after we talk about the heap.

@@ -25,4 +25,24 @@ This is not incredibly fast, nor is it incredibly memory efficient, but it is si
 
 I presume that the heap will not be used too much, so this should be fine.
 
+## Allocating Data
+
+To actually access the heap, use the `malloc` function, then free with the `free` function. This is just like in C.
+
+_src/main.ing_
+```C
+struct Team {
+    int points;
+    string name;
+}
+
+fn main() {
+    int *team = malloc(Struct Team);  
+    
+    free(team);
+}
+```
+
+## Notes
+
 Note that while the heap is incredibly useful in normal systems, it should be seldom used in Minecraft. This is because of the poor speed of the heap implementation, and the fact that similar functionality can be achieved in other ways. Refer to [Global Memory](Global-Memory.md) and [Entities as Objects](Data-in-Entities.md).
