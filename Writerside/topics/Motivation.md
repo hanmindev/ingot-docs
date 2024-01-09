@@ -1,8 +1,8 @@
 # Why Ingot?
 
-The creation of the mcfunction language is quite... unique. What was a set of console commands for players to control their game environment quickly evolved into its own programming language, albeit with many caveats.
+The creation of the mcfunction language is quite... unique. What started as a set of console commands for players to control their game environment quickly evolved into its own programming language, albeit with many caveats.
 
-Since this was never really meant to be a proper programming language, but rather had features added to it until it became Turing complete, it is missing a lot of features common in other non-machine level languages, such as expression evaluation or proper if-else statements.
+Since this was never really meant to be a proper programming language, but rather had features added to it until it became "good enough", it is missing a lot of features common in other non-machine level languages, such as expression evaluation or proper if-else statements.
 
 This makes writing mcfunction incredibly tedious, costing a lot of time and effort to write even simple programs. What could be written in a few lines in other languages could take hundreds of lines in mcfunction.
 
