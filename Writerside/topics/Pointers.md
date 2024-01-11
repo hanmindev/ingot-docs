@@ -100,7 +100,9 @@ fn main() {
         g: 7
     }
     
-    println!(hc!(multiply(&mv)));
+    const int *mp = &mv; // we could also just use &mv directly, but this is just to show that the address of mv is known at compile time
+        
+    println!(hc!(multiply(mp)));
 }
 ```
 
