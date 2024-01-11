@@ -11,7 +11,7 @@ Structs are a way to store multiple values in a single variable. The variables c
 
 ### Declaration
 
-Structs are declared with the `struct` keyword.
+Structs are defined with the `struct` keyword.
 
 _src/main.ing_
 ```C
@@ -61,7 +61,6 @@ Team 1
 
 Structs can have methods. The syntax is similar to that of Rust:
 
-
 _src/main.ing_
 ```C
 fn main() {
@@ -87,6 +86,8 @@ fn main() {
     println!(team.name);
 }
 ```
+
+Note that here, even though `&self` is a reference value, we still use the dot notation. This is because the compiler will automatically dereference the reference value.
 
 **Sample Output**
 ```
