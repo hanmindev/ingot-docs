@@ -59,4 +59,15 @@ fn main() {
 }
 ```
 
-Note: variable declaration can have the `const` keyword in front of it to make it a constant. Unlike some other languages, constants can only be set to a constant expression. i.e. the compiler must be able to evaluate the value of the constant at compile time.
+## Constants
+
+Variables can be declared with the `const` keyword to make it a constant.
+
+_src/main.ing_
+```C
+const int a = 1;
+```
+
+In Ingot, constants are immutable values that are known at compile time. This means that the compiler must be able to evaluate the value of the constant at compile time.
+
+This means that unlike some other languages where "constant" just means "immutable after initialization", Ingot constants cannot be initialized from non-constant variables, with a function call, or any other expression that cannot be evaluated at compile time.
