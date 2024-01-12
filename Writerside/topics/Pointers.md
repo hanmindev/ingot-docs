@@ -316,7 +316,7 @@ struct Outer {
 
 To fix this problem, we can store `Outer` like so:
 
-abcf______ab________
+abcf______ab
 
 At some address which is a multiple of `100`. Suppose the address was `12300`. The underscores represent padding.
 
@@ -324,7 +324,7 @@ This way, the address of the first `Inner` struct inside the `Outer` struct will
 
 Note that there are a few caveats with this method:
 1. We cannot have a struct which is three levels deep, as the outer struct would have to be aligned to 1000. This is not a limitation of the method, but rather a design decision to limit the complexity of the compiler.
-2. Each inner struct takes up 10 addresses worth of space, even if it is smaller than 10 addresses. This is because we need to ensure that the inner struct is aligned to 10. This could potentially make certain structs take up more space than they need to, but this is a tradeoff we have to make for speed.
+2. Each inner struct takes up 10 addresses worth of space (unless positioned at the very end), even if it is smaller than 10 addresses. This is because we need to ensure that the inner struct is aligned to 10. This could potentially make certain structs take up more space than they need to, but this is a tradeoff we have to make for speed.
 
 The wasted memory issue can be alleviated by storing other variables, if there are any, between the padding. For example, if we have an instance of the `Outer` struct on the stack, we can store some other stack variables in the padding.
 
