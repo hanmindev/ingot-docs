@@ -18,13 +18,17 @@ In Ingot, memory addressing will be done using two scoreboards, which are 32-bit
 
 If the main address is `0`, then the whole address will be considered `null'.
 
-If the main address is `1`, then the address will be considered to be in global memory at the sub address.
+If the main address is `-1`, then the address will be considered to be in global memory at the sub address.
 
-If the main address is `2`, then the address will be considered to be on the heap at the sub address.
+If the main address is less than `-1`, then the address will be considered to be on the stack.
 
-If the main address is greater than 2, then the address will be considered to be on the stack.
+If the main address is positive, then the address will be considered to be on the heap at the sub address.
 
-This may seem odd, and one may question why we have decided to split up the addresses this way. This is because by having a separate main address and a sub address, for any `rec` functions, the compiler can just write one function with the sub addresses filled in, then fill in the main addresses using a macro, which only supports string concatenation and not integer addition. For the stack, the main address can be thought of as the stack frame, and the sub address can be thought of as the offset from the stack frame.
+This may seem odd, and one may question why we have decided to split up the addresses this way. This is because by having a separate main address and a sub address, for any `rec` functions, the compiler can just write one function with the sub addresses filled in, then fill in the main addresses using a macro, which only supports string concatenation and not integer addition.
+
+For the stack, the main address can be thought of as the stack frame, and the sub address can be thought of as the offset from the stack frame.
+
+For the heap, the main address can be thought of as the heap block, and the sub address can be thought of as the offset from the heap block.
 
 Addresses will be written out as `main_sub`.
 

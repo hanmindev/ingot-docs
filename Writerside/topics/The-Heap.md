@@ -4,7 +4,7 @@ The stack is useful, but it has a few limitations. The main limitation is that t
 
 The heap is a region of memory that is not directly accessible by the CPU, and is used for storing variables with dynamic size and longer lifetime.
 
-Internal fragmentation can be an issue in the heap because we want to keep data contiguously. However, in Minecraft scoreboards, there is no real concept of contiguous data, and scoreboards are index by strings anyway, so what we can do is when we allocate a set amount of data on the heap, we return the address, suppose it is 12345, then each block of data can be assigned to fake player 12345-0, 12345-1, etc. This way, we can just keep track of which 'main address' is being used, and we can just use the fake players to index the data.
+Internal fragmentation can be an issue in the heap because we want to keep data contiguously. However, in Minecraft scoreboards, there is no real concept of contiguous data, and scoreboards are index by strings anyway, so what we can do is when we allocate a set amount of data on the heap, we return the main address, suppose it is `12345`, then each block of data can be assigned to fake player `12345-0`, `12345-1`, etc. This way, we can just keep track of which main address is being used, and we can just use the fake players to index the data.
 
 We could use a bitmap to keep track of which addresses are being used, but Minecraft does not have bitwise operations so this will be incredibly slow (we would have to use division and modulo which would be extremely expensive). Instead, we will use a simple algorithm:
 

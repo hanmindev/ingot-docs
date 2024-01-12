@@ -21,7 +21,7 @@ fn main() {
 
 **Sample Output**
 ```
-543-0
+1-543
 5
 ```
 
@@ -232,11 +232,11 @@ $scoreboard players operation $(main_addr_0)-$(sub_addr_0) ingt_mem += $(main_ad
 
 /main
 scoreboard players set 1-214312 ingt_mem 2
-scoreboard players set 1-214313 ingt_mem 5324234
+scoreboard players set 1-214313 ingt_mem 0
 scoreboard players set 1-214314 ingt_mem 2
-scoreboard players set 1-214315 ingt_mem 5324235
+scoreboard players set 1-214315 ingt_mem 1
 scoreboard players set 1-214316 ingt_mem 2
-scoreboard players set 1-214317 ingt_mem 5324236 # assume these are the addresses of the struct fields returned from malloc
+scoreboard players set 1-214317 ingt_mem 2 # assume these are the addresses of the struct fields returned from malloc
 
 execute store result storage ingt:fn_mcr params.main_addr_0 int 1 run scoreboard players get 1-214312 ingt_mem
 execute store result storage ingt:fn_mcr params.sub_addr_0 int 1 run scoreboard players get 1-214313 ingt_mem
@@ -274,7 +274,7 @@ $scoreboard players operation $(main_addr_0)-$(sub_addr_0)0 ingt_mem += $(main_a
 
 /main
 scoreboard players set 1-214312 ingt_mem 2
-scoreboard players set 1-214313 ingt_mem 5324230 # start of the struct address
+scoreboard players set 1-214313 ingt_mem 0 # start of the struct address
 
 execute store result storage ingt:fn_mcr params.main_addr_0 int 1 run scoreboard players get 1-214312 ingt_mem
 execute store result storage ingt:fn_mcr params.sub_addr_0 int 0.1 run scoreboard players get 1-214313 ingt_mem
@@ -318,9 +318,9 @@ To fix this problem, we can store `Outer` like so:
 
 abcf______ab
 
-At some address which is a multiple of `100`. Suppose the address was `12300`. The underscores represent padding.
+At some sub address which is a multiple of `100`. Suppose the sub address was `12300`. The underscores represent padding.
 
-This way, the address of the first `Inner` struct inside the `Outer` struct will be aligned to 10 as needed, as it will have a subaddress of 12300. The address of the second `Inner` struct inside the `Outer` struct will be shifted to the right by 10, so it will have a subaddress of 12310, which is still aligned to 10. Rest of the fields can be stored as normal at the end, or in between the structs in the padding, like shown above.
+This way, the address of the first `Inner` struct inside the `Outer` struct will be aligned to 10 as needed, as it will have a sub address of 12300. The address of the second `Inner` struct inside the `Outer` struct will be shifted to the right by 10, so it will have a subaddress of 12310, which is still aligned to 10. Rest of the fields can be stored as normal at the end, or in between the structs in the padding, like shown above.
 
 Note that there are a few caveats with this method:
 1. We cannot have a struct which is three levels deep, as the outer struct would have to be aligned to 1000. This is not a limitation of the method, but rather a design decision to limit the complexity of the compiler.
