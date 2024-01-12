@@ -43,6 +43,8 @@ fn main() {
 }
 ```
 
-## Notes
+## Performance
 
-Note that while the heap is incredibly useful in normal systems, it should be seldom used in Minecraft. This is because of the poor speed of the heap implementation, and the fact that similar functionality can be achieved in other ways. Refer to [Global Memory](Global-Memory.md) and [Entities as Objects](Data-in-Entities.md).
+Note that while the heap is incredibly useful in normal systems, it should be used cautiously in Minecraft. This is because of the poor speed of the heap implementation, even outside of heap allocation. Whilst in normal systems, heap allocation is slightly slower, but heap access is just as fast, in Minecraft, the dynamic nature of the heap requires dynamic access, which is very slow.
+
+Frequent heap allocations and deallocations should be avoided, and variables that will be accessed frequently should be stored elsewhere such as in global memory instead, even if it is bad practice. Refer to [Global Memory](Global-Memory.md) and [Entities as Objects](Data-in-Entities.md).
