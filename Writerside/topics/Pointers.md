@@ -120,7 +120,7 @@ For example, for the following function:
 
 _src/main.ing_
 ```C
-fn double(int *a) {
+fn multiply(int *a) {
     d_mcr!(a, {
         (*a) *= 2;
     });
@@ -128,26 +128,26 @@ fn double(int *a) {
 
 fn main() {
     int a = 5;
-    double(a);
+    multiply(a);
 }
 ```
 
 The compiled code may look something like this barring additional compiler optimizations:
 
 ```
-/double
+/multiply
 $scoreboard players operation $(main_addr_0)-$(sub_addr_0) ingt_mem *= 2 ingt_const
 
 
 /main
 scoreboard players set 1-214312 ingt_mem 5
-function double {main_addr_0: 1, sub_addr_0: 214312}
+function multiply {main_addr_0: 1, sub_addr_0: 214312}
 ```
 
 Let's break this down.
 
-1. The `double` function is compiled into a function that takes in a main address and a sub address, and multiplies the value at that address by 2. Note that it uses a macro, since it uses non-constant pointers. You don't have to worry about the `d_mcr` macro for now, this is only needed because dereferencing a pointer is dynamic. Learn more about it in [Dynamic Access](Dynamic-Access.md).
-2. The `main` function sets the value of `a` to 5, then calls the `double` function with the address of `a`, which happens to be `1-214312`. Recall that non `rec` functions store local variables in global memory, which is stored at main address `1`. The sub address could be anything, but for this example, we will just use `214312`.
+1. The `multiply` function is compiled into a function that takes in a main address and a sub address, and multiplies the value at that address by 2. Note that it uses a macro, since it uses non-constant pointers. You don't have to worry about the `d_mcr` macro for now, this is only needed because dereferencing a pointer is dynamic. Learn more about it in [Dynamic Access](Dynamic-Access.md).
+2. The `main` function sets the value of `a` to 5, then calls the `multiply` function with the address of `a`, which happens to be `1-214312`. Recall that non `rec` functions store local variables in global memory, which is stored at main address `1`. The sub address could be anything, but for this example, we will just use `214312`.
 3. Note that the address of `a` is known at compile time, so the compiler can just insert the address into the function as a macro parameter.
 
 ## Issues with Structs
@@ -195,7 +195,7 @@ $scoreboard players operation $(main_addr_0)-$(sub_addr_0) ingt_mem += $(main_ad
 scoreboard players set 1-214312 ingt_mem 1
 scoreboard players set 1-214313 ingt_mem 2
 scoreboard players set 1-214314 ingt_mem 3
-function double {main_addr_0: 1, sub_addr_0: 214312, sub_addr_1: 214313, sub_addr_2: 214314}
+function multiply {main_addr_0: 1, sub_addr_0: 214312, sub_addr_1: 214313, sub_addr_2: 214314}
 ```
 
 Which is fine, because we happen to know the address of the struct at compile time, but what if we don't?
@@ -245,7 +245,7 @@ execute store result storage ingt:fn_mcr params.sub_addr_1 int 1 run scoreboard 
 execute store result storage ingt:fn_mcr params.main_addr_2 int 1 run scoreboard players get 1-214316 ingt_mem
 execute store result storage ingt:fn_mcr params.sub_addr_2 int 1 run scoreboard players get 1-214317 ingt_mem
 
-function double with ingt:fn_mcr params 
+function multiply with ingt:fn_mcr params 
 ```
 
 Wow, that's long! Let's break it down.
@@ -279,7 +279,7 @@ scoreboard players set 1-214313 ingt_mem 5324230 # start of the struct address
 execute store result storage ingt:fn_mcr params.main_addr_0 int 1 run scoreboard players get 1-214312 ingt_mem
 execute store result storage ingt:fn_mcr params.sub_addr_0 int 0.1 run scoreboard players get 1-214313 ingt_mem
 
-function double with ingt:fn_mcr params 
+function multiply with ingt:fn_mcr params 
 ```
 
 Let's break it down.
