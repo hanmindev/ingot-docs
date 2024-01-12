@@ -2,7 +2,7 @@
 
 I'm assuming you know what a pointer is. If you don't, there are many resources on C-style pointers.
 
-In Ingot, pointers are 32-bit signed integers, and are used to access memory. Recall the [Memory Model](The-Memory-Model.md).
+In Ingot, pointers are pairs of two 32-bit signed integers, and are used to access memory. Recall the [Memory Model](The-Memory-Model.md).
 
 You can get the address of a variable using the `&` operator, and dereference a pointer using the `*` operator.
 
