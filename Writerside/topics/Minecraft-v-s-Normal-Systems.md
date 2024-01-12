@@ -10,7 +10,7 @@ If there are values that are larger than one byte, they will take up multiple co
 
 The memory model in Minecraft is similar, but there are a few key differences.
 
-First, since everything is virtual, we are able to split the stack and the heap into separate arrays.
+First, since everything is virtual, we are able to split the data segment away from the stack and the heap.
 
 Second, because scoreboards are indexed by name rather than by address, we can make two-dimensional addresses. For example, instead of storing a 4-byte variable at addresses 1000, 1001, 1002, 1003, we can store it at addresses 1000-0, 1000-1, 1000-2, 1000-3. This will help us with dynamic memory access.
 
