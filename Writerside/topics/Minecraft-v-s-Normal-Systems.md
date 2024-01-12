@@ -10,25 +10,28 @@ If there are values that are larger than one byte, they will take up multiple co
 
 The memory model in Minecraft is similar, but there are a few key differences.
 
-First, since everything is virtual, we are able to split the data segment away from the stack and the heap.
+### Address Format
 
-Second, because scoreboards are indexed by name rather than by address, we can make two-dimensional addresses. For example, instead of storing a 4-byte variable at addresses 1000, 1001, 1002, 1003, we can store it at addresses 1000-0, 1000-1, 1000-2, 1000-3. This will help us with dynamic memory access.
+Since everything in Minecraft is virtual, we are able to split the stack, heap, and the data segment.
 
-We will call the first part of the address the main address, and the second part of the address the sub address, and the whole thing the address.
+In Ingot, memory addressing will be done using two scoreboards, which are 32-bit signed integers. The first scoreboard will be the main address, and the second scoreboard will be the sub address.
 
-Note: Structs with Structs inside of them will have the inner struct(s) stored in the next address. For example:
+If the main address is `0`, then the whole address will be considered `null'.
 
-```C
-struct A {
-    int a0;
-    int b0;
-    struct B c;
-}
+If the main address is `1`, then the address will be considered to be in global memory at the sub address.
 
-struct B {
-    int a1;
-    int b1;
-}
-```
+If the main address is `2`, then the address will be considered to be on the heap at the sub address.
 
-If we want to store struct A in main address 1000, a0 would be stored at 1000-0, b0 would be stored at 1000-1, a1 would be stored at 1001-0, and b1 would be stored at 1001-1. 
+If the main address is greater than 2, then the address will be considered to be on the stack.
+
+This may seem odd, and one may question why we have decided to split up the addresses this way. This is because by having a separate main address and a sub address, for any `rec` functions, the compiler can just write one function with the sub addresses filled in, then fill in the main addresses using a macro, which only supports string concatenation and not integer addition. For the stack, the main address can be thought of as the stack frame, and the sub address can be thought of as the offset from the stack frame.
+
+Addresses will be written out as `main_sub`.
+
+### Memory Locations
+
+Minecraft has two different places it can store data: in scoreboards, but also in storage.
+
+This means that while integers can be stored in scoreboards, other values, such as floats and strings, will need to be stored in storage.
+
+Given an address, we will have two places to look for the data! This is not a problem however as Ingot has a strict type system, so we will know where to look for the data in compile time.
