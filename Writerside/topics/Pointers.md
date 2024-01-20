@@ -9,9 +9,9 @@ You can get the address of a variable using the `&` operator, and dereference a 
 _src/main.ing_
 ```C
 fn main() {
-    int a = 5;
+    let a: int = 5;
     
-    int *p = &a;
+    let p: *int = &a;
     
     println!(p);
     
@@ -32,16 +32,16 @@ This allows us to do something like pass a large struct into a function without 
 _src/main.ing_
 ```C
 struct ManyValues {
-    int a;
-    int b;
-    int c;
-    int d;
-    int e;
-    int f;
-    int g;
+    a: int,
+    b: int,
+    c: int,
+    d: int,
+    e: int,
+    f: int,
+    g: int
 }
 
-fn multiply(ManyValues *mp) {
+fn multiply(mp: *ManyValues) {
     return mp.a * mp.b * mp.c * mp.d * mp.e * mp.f * mp.g;
 }
 
@@ -79,22 +79,22 @@ Thus, we can actually tell the compiler to generate a new function specifically 
 _src/main.ing_
 ```C
 struct ManyValues {
-    int a;
-    int b;
-    int c;
-    int d;
-    int e;
-    int f;
-    int g;
+    let a: int,
+    let b: int,
+    let c: int,
+    let d: int,
+    let e: int,
+    let f: int,
+    let g: int
 }
 
-fn multiply(ManyValues *mp) {
+fn multiply(mp: *ManyValues) {
     return mp.a * mp.b * mp.c * mp.d * mp.e * mp.f * mp.g;
 }
 
 
 fn main() {
-    ManyValues mv = {
+    let mv: ManyValues = {
         a: 1,
         b: 2,
         c: 3,
@@ -104,7 +104,7 @@ fn main() {
         g: 7
     }
     
-    const int *mp = &mv; // we could also just use &mv directly, but this is just to show that the address of mv is known at compile time
+    const mp: *int = &mv; // we could also just use &mv directly, but this is just to show that the address of mv is known at compile time
         
     println!(hc!(multiply(mp)));
 }
@@ -120,14 +120,14 @@ For example, for the following function:
 
 _src/main.ing_
 ```C
-fn multiply(int *a) {
+fn multiply(a: *int) {
     d_mcr!(a, {
         (*a) *= 2;
     });
 }
 
 fn main() {
-    int a = 5;
+    let a: int = 5;
     multiply(a);
 }
 ```
@@ -163,19 +163,19 @@ For example, consider the following function:
 _src/main.ing_
 ```C
 struct Stuff {
-    int a;
-    int b;
-    int c;
+    let a: int,
+    let b: int,
+    let c: int,
 }
 
-fn dostuff(Stuff *s) {
+fn dostuff(s: *Stuff) {
     d_mcr!(s, {
         s.a = s.b + s.c;
     });
 }
 
 fn main() {
-    Stuff s = {
+    let s: *Stuff = {
         a: 1,
         b: 2,
         c: 3
@@ -204,19 +204,19 @@ Which is fine, because we happen to know the address of the struct at compile ti
 _src/main.ing_
 ```C
 struct Stuff {
-    int a;
-    int b;
-    int c;
+    let a: int,
+    let b: int,
+    let c: int
 }
 
-fn dostuff(Stuff *s) {
+fn dostuff(s: *Stuff) {
     d_mcr!(s, {
         s.a = s.b + s.c;
     });
 }
 
 fn main() {
-    Stuff *s = malloc(Stuff);
+    let s: *Stuff = malloc(Stuff);
     
     dostuff(s);
 }
@@ -302,15 +302,15 @@ Consider the following struct(s):
 _src/main.ing_
 ```C
 struct Inner {
-    int a;
-    int b;
+    a: int,
+    b: int
 }
 
 struct Outer {
-    int c;
-    Inner d;
-    Inner e;
-    int f;
+    c: int,
+    d: Inner,
+    e: Inner,
+    f: int
 }
 ```
 

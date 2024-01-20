@@ -7,8 +7,8 @@ Conditional statements are the heart of any programming language.
 _src/main.ing_
 ```C
 fn main() {
-    int a = 1;
-    int b = 2;
+    let a: int = 1;
+    let b: int = 2;
 
     if (a > b) {
         println!(a);
@@ -27,7 +27,7 @@ For now the parentheses around the condition are required.
 _src/main.ing_
 ```C
 fn main() {
-    int a = 0;
+    let a: int = 0;
     while (a < 10) {
         println!(a);
         a = a + 1;
@@ -56,7 +56,7 @@ Similarly, the parantheses around the condition are required.
 _src/main.ing_
 ```C
 fn main() {
-    for (int i = 0; i < 10; i++) {
+    for (let i: int = 0; i < 10; i++) {
         println!(i);
     }
 }
@@ -83,7 +83,7 @@ This is a C-style for loop. The parentheses around the condition are required.
 _src/main.ing_
 ```C
 fn main() {
-    for (int i = 0; i < 10; i++) {
+    for (let i: int = 0; i < 10; i++) {
         if (i == 5) {
             break;
         }
@@ -103,7 +103,7 @@ fn main() {
 _src/main.ing_
 ```C
 fn main() {
-    for (int i = 0; i < 10; i++) {
+    for (let i: int = 0; i < 10; i++) {
         if (i == 5) {
             continue;
         }

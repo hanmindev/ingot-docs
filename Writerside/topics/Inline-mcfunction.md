@@ -8,7 +8,7 @@ Just like how one can write inline assembly in C or Rust, one can write inline m
 
 ```C
 fn main() {
-    int a = 0;
+    let a: int = 0;
     while (a < 10) {
         mcf!(
             "summon minecraft:armor_stand",
@@ -29,7 +29,7 @@ The `mcf!` macro can also take variables, and it will insert the value of the va
 
 ```C
 fn main() {
-    int a = 0;
+    let a: int = 0;
     while (a < 10) {
         d_mcr!(a, {
             mcf!(
@@ -52,9 +52,9 @@ Sometimes, it may be useful to copy the value of a variable to a scoreboard valu
 
 ```C
 fn main() {
-    int a = 10;
+    let a: int = 10;
     mcf_input!("Steve kills", a);
-    int b;
+    let b: int;
     mcf_output!(b, "Steve health");
 }
 ```

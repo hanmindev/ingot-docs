@@ -16,8 +16,8 @@ Structs are defined with the `struct` keyword.
 _src/main.ing_
 ```C
 struct Team {
-    int points;
-    string name;
+    points: int,
+    name: string
 }
 ```
 
@@ -28,7 +28,7 @@ Instances of structs can be made by specifying the struct name and then the valu
 _src/main.ing_
 ```C
 fn main() {
-    Team team = {
+    let team: Team = {
         points: 0,
         name: "Team 1"
     };
@@ -40,7 +40,7 @@ Specific fields can be accessed with the `.` operator.
 _src/main.ing_
 ```C
 fn main() {
-    Team team = {
+    let team: Team = {
         points: 0,
         name: "Team 1"
     };
@@ -64,7 +64,7 @@ Structs can have methods. The syntax is similar to that of Rust:
 _src/main.ing_
 ```C
 fn main() {
-    Team team = {
+    let team: Team = {
         points: 0,
         name: "Team 1"
     };
@@ -76,7 +76,7 @@ impl Team {
     }
 }
 fn main() {
-    Team team = {
+    let team: Team = {
         points: 0,
         name: "Team 1"
     };
@@ -106,12 +106,12 @@ Instead, if you want a type-safe compound, you may add a struct to a compound li
 _src/main.ing_
 ```C
 struct Point {
-    int x;
-    int y;
+    x: int,
+    y: int
 }
 
 fn main() {
-    compound<Point> c = {
+    let c: compound<Point> = {
         x: 1,
         y: 2
     };
@@ -125,18 +125,18 @@ If you want to convert a compound to a struct, you can use the `to_struct` macro
 _src/main.ing_
 ```C
 struct Point {
-    int x;
-    int y;
+    x: int,
+    y: int
 }
 
 fn main() {
-    compound<Point> c = {
+    let c: compound<Point> = {
         x: 1,
         y: 2
     };
     
-    Point p = to_struct!(c);
+    let p: Point = to_struct!(c);
     
-    compound<Point> c2 = to_compound!(p);
+    let c2: compound<Point> = to_compound!(p);
 }
 ```

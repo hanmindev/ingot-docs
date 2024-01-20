@@ -41,21 +41,21 @@ _src/main.ing_
 
 ```C
 struct Example_Struct {
-    int a;
-    float b;
-    double c;
-    string d;
+    let a; int;
+    let b; float;
+    let c; double;
+    let d; string;
 } // see Bundling Data for more information on structs
 
 fn main() {
-    bool a = true;
-    int b = 1;
-    float c = 2.0;
-    double d = 3.0;
-    string e = "Hello World!";
-    compound<Example_Struct> f = { "a": 1, "b": 2.0, "c": 3.0, "d": "Hello World!" };
-    int[] g = {1, 2, 3, 4, 5};
-    list<int> h = { 1, 2, 3, 4, 5 };
+    let a: bool = true;
+    let b: int = 1;
+    let c: float = 2.0;
+    let d: double = 3.0;
+    let e: string = "Hello World!";
+    let f: compound<Example_Struct> = { "a": 1, "b": 2.0, "c": 3.0, "d": "Hello World!" };
+    let g: int[] = {1, 2, 3, 4, 5};
+    let h: list<int> = { 1, 2, 3, 4, 5 };
 }
 ```
 
@@ -65,7 +65,7 @@ Variables can be declared with the `const` keyword to make it a constant.
 
 _src/main.ing_
 ```C
-const int a = 1;
+const a: int = 1;
 ```
 
 In Ingot, constants are immutable values that are known at compile time. This means that the compiler must be able to evaluate the value of the constant at compile time.

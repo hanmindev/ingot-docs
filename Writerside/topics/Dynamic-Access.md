@@ -11,9 +11,9 @@ So in Ingot, while you can index an index with a constant like so:
 _src/main.ing_
 ```C
 fn main() {
-    int[] arr = [1, 2, 3, 4, 5];
+    let arr: int[] = [1, 2, 3, 4, 5];
     
-    const int c = 4; // note that this is a constant, and known at compile time
+    const c: int = 4; // note that this is a constant, and known at compile time
     
     println!(arr[0]);
     println!(arr[c]);
@@ -30,9 +30,9 @@ You cannot do this:
 _src/main.ing_
 ```C
 fn main() {
-    int[] arr = [1, 2, 3, 4, 5];
+    let arr: int[] = [1, 2, 3, 4, 5];
     
-    int i = 4; // note that this is a variable, and not known at compile time
+    let i: int = 4; // note that this is a variable, and not known at compile time
     
     println!(arr[i]);
 ```
@@ -56,8 +56,8 @@ While the compiler could just use Minecraft function macros for all dynamic acce
 _src/main.ing_
 ```C
 fn main() {
-    int[] arr = [8, 3, 2, 9];
-    for (int i = 0; i < 4; i++) {
+    let arr: int[] = [8, 3, 2, 9];
+    for (let i: int = 0; i < 4; i++) {
         f_lin!(i, 0, 4, {
             println!(arr[i]);
         });
@@ -84,8 +84,8 @@ This is equivalent to rewriting the code like this:
 _src/main.ing_
 ```C
 fn main() {
-    int[] arr = [8, 3, 2, 9];
-    for (int i = 0; i < 4; i++) {
+    let arr: int[] = [8, 3, 2, 9];
+    for (let i: int = 0; i < 4; i++) {
         if (i == 0) {
             println!(arr[0]);
         } else if (i == 1) {
@@ -104,8 +104,8 @@ fn main() {
 _src/main.ing_
 ```C
 fn main() {
-    int[] arr = [8, 3, 2, 9];
-    for (int i = 0; i < 4; i++) {
+    let arr: int[] = [8, 3, 2, 9];
+    for (let i: int = 0; i < 4; i++) {
         f_tree!(i, 0, 4, 2, {
             println!(arr[i]);
         });
@@ -133,8 +133,8 @@ This is equivalent to rewriting the code like this:
 _src/main.ing_
 ```C
 fn main() {
-    int[] arr = [8, 3, 2, 9];
-    for (int i = 0; i < 4; i++) {
+    let arr: int[] = [8, 3, 2, 9];
+    for (let i: int = 0; i < 4; i++) {
         if (i < 2) {
             if (i <= 0) {
                 println!(arr[0]);
@@ -159,8 +159,8 @@ This looks more complicated, but it is actually faster than the linear search. F
 _src/main.ing_
 ```C
 fn main() {
-    int[] arr = [8, 3, 2, 9];
-    for (int i = 0; i < 4; i++) {
+    let arr: int[] = [8, 3, 2, 9];
+    for (let i: int = 0; i < 4; i++) {
         d_mcr!(i, {
             println!(arr[i]);
         });
@@ -201,8 +201,8 @@ However, the macro system just replaces the values at runtime, meaning that we c
 _src/main.ing_
 ```C
 fn main() {
-    int[] arr = [8, 3, 2, 9];
-    for (int i = 0; i < 4; i++) {
+    let arr: int[] = [8, 3, 2, 9];
+    for (let i: int = 0; i < 4; i++) {
         d_mcrr!(i, 0, 4, {
             println!(arr[i]);
         });
@@ -225,9 +225,9 @@ If you wanted, you could add more arguments to the macro like so:
 _src/main.ing_
 ```C
 fn main() {
-    int[] arr = [8, 3, 2, 9];
-    for (int i = 0; i < 4; i++) {
-        for (int j = 3; j < 4; i++) {
+    let arr: int[] = [8, 3, 2, 9];
+    for (let i: int = 0; i < 4; i++) {
+        for (let j: int = 3; j < 4; i++) {
             d_mcrr!(i, 0, 4, j, 3, 4, {
                 println!(arr[i]);
                 println!(arr[j]);

@@ -14,7 +14,7 @@ This will not work and will result in a compile error.
 
 _src/global.ing_
 ```C
-int x = 5;
+let x: int = 5;
 ```
 
 _src/main.ing_
@@ -24,16 +24,18 @@ fn main() {
 }
 ```
 
-If you want to make a global variable accessible by other files, you can use the `export` keyword.
+If you want to make a global variable accessible by other files, you can use the `pub` keyword.
 
 _src/global.ing_
 ```C
-export int x = 5;
+pub let x: int = 5;
 ```
 
 _src/main.ing_
 ```C
-import { x } from "global";
+use root::global::x
+
+mod global
 
 fn main() {
     println!(x);
@@ -45,4 +47,4 @@ fn main() {
 5
 ```
 
-Learn more about the `import` and `export` keywords in [Modules](Modules.md).
+Learn more about the `use`, `mod` and `pub` keywords in [Modules](Modules.md).

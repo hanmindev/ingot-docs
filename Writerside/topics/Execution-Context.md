@@ -36,7 +36,7 @@ In a loop, it might be useful to save execution contexts. For example, if you wa
 _src/main.ing_
 ```C
 fn main() {    
-    for (int i = 0; i < 10; i++) fctx!("positioned ~ ~ ~1", {
+    for (let i: int = 0; i < 10; i++) fctx!("positioned ~ ~ ~1", {
         mcf!("setblock ~ ~ ~ stone");
     });
 }
@@ -60,9 +60,9 @@ _src/main.ing_
 ```C
 fn main() {
     ctx_retrieve!("@e[type=marker, limit=1, tag=save_a]", "r", {
-        for (int i = 0; i < 10; i++) fctx!("positioned ^ ^ ^1", {
+        for (let i: int = 0; i < 10; i++) fctx!("positioned ^ ^ ^1", {
             ctx_retrieve!("@e[type=marker, limit=1, tag=save_b]", "r", {
-                for (int j = 0; j < 10; j++) fctx!("positioned ^1 ^ ^", {
+                for (let j: int = 0; j < 10; j++) fctx!("positioned ^1 ^ ^", {
                     mcf!("setblock ~ ~ ~ stone");
                 });
             });

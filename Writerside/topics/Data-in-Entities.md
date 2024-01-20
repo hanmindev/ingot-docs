@@ -53,7 +53,7 @@ In the game, a scoreboard objective with name `namespace.file_name.val` will be 
 Note: You may want to allow other files to access the value of `val`. You can do this by exporting the value of `val`:
 
 ```C
-export entity int val;
+pub entity val: int;
 
 fn main() {
     ctx!("as @e[name=foo]", {
@@ -69,7 +69,7 @@ We can access the data in entities using the `entity` keyword.
 ```C
 fn main() {
     ctx!("as @e[name=foo]", {
-        entity int val;
+        entity val: int;
         println!(val);
     });
 }
@@ -82,7 +82,7 @@ Of course, we can modify the value of the variable `val` in the entity `foo`:
 ```C
 fn main() {
     ctx!("as @e[name=foo]", {
-        entity int val;
+        entity val: int;
         val += 3;
         
         println!(val);
@@ -100,7 +100,7 @@ For example, if we want to modify the entity's position, we can do so like this:
 
 ```C
 fn main() {
-    list<double> pos = { 1.0, 2.0, 3.0 };
+    let pos: list<double> = { 1.0, 2.0, 3.0 };
 
     ctx!("as @e[name=foo]", {
         entity_nbt!("Pos") = pos;
@@ -117,7 +117,7 @@ We can access the data in entities using the `entity_nbt` macro.
 ```C
 fn main() {
     ctx!("as @e[name=foo]", {
-        list<double> pos = entity_nbt!("Pos");
+        let pos: list<double> = entity_nbt!("Pos");
         println!(pos);
     });
 }
@@ -154,7 +154,7 @@ We can access the data in entities using the `block_nbt` macro.
 ```C
 fn main() {
     ctx!("positioned 0 0 0", {
-        bool playing = block_nbt!("IsPlaying");
+        let playing: bool = block_nbt!("IsPlaying");
         
         println!(playing);
     });

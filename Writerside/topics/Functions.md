@@ -5,7 +5,7 @@ Functions are declared with the `fn` keyword. Functions can have parameters and 
 _src/main.ing_
 ```C
 fn main() {
-    let (a, b) = sum_prod(1, 2);
+    let (a, b): (int, int) = sum_prod(1, 2);
     println!(a);
     println!(b);
 }

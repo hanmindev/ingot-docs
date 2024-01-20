@@ -32,12 +32,12 @@ To actually access the heap, use the `malloc` function, then free with the `free
 _src/main.ing_
 ```C
 struct Team {
-    int points;
-    string name;
+    let points: int;
+    let name: string;
 }
 
 fn main() {
-    int *team = malloc(Struct Team);  
+    let team: *int = malloc(Team);  
     
     free(team);
 }
